@@ -10,7 +10,14 @@ export type todolistsType = {
     title: string,
     filter: FilterValuesType
 }
-
+export type taskType = {
+    id: string,
+    title: string,
+    isDone: boolean,
+}
+export type taskArrayType = {
+    [key: string]: taskType[]
+}
 function App() {
 
     // let [tasks, setTasks] = useState([
@@ -30,7 +37,7 @@ function App() {
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
 
-    let [tasks, setTasks] = useState({
+    let [tasks, setTasks] = useState<taskArrayType>({
         [todolistID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
@@ -70,8 +77,9 @@ function App() {
 
 
 
-    function changeFilter(value: FilterValuesType) {
-        setFilter(value);
+    function changeFilter(todolistId:string, value: FilterValuesType) {
+
+       /* setFilter(value);*/
     }
 
 
@@ -89,6 +97,7 @@ function App() {
 
                 return (
                     <Todolist
+                        todolists={todolists}
                         key={t.id}
                         title={t.title}
                         filter={t.filter}
