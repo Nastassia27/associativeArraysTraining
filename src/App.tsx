@@ -21,14 +21,6 @@ export type taskArrayType = {
 
 function App() {
 
-    // let [tasks, setTasks] = useState([
-    //     {id: v1(), title: "HTML&CSS", isDone: true},
-    //     {id: v1(), title: "JS", isDone: true},
-    //     {id: v1(), title: "ReactJS", isDone: false},
-    //     {id: v1(), title: "Rest API", isDone: false},
-    //     {id: v1(), title: "GraphQL", isDone: false},
-    // ]);
-    // let [filter, setFilter] = useState<FilterValuesType>("all");
 
     let todolistID1 = v1();
     let todolistID2 = v1();
@@ -66,7 +58,7 @@ function App() {
     function addTask(todolistId: string,title: string) {
         let task = {id: v1(), title: title, isDone: false};
          //let newTasks = [task, ...tasks];
-        let newTask={...tasks,[todolistId]: [...tasks[todolistId], task]}
+        let newTask={...tasks,[todolistId]: [task, ...tasks[todolistId]]}
          setTasks(newTask);
     }
 
