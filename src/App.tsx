@@ -18,6 +18,7 @@ export type taskType = {
 export type taskArrayType = {
     [key: string]: taskType[]
 }
+
 function App() {
 
     // let [tasks, setTasks] = useState([
@@ -61,25 +62,25 @@ function App() {
     }
 
     function addTask(title: string) {
-       /* let task = {id: v1(), title: title, isDone: false};
-        let newTasks = [task, ...tasks];
-        setTasks(newTasks);*/
+        /* let task = {id: v1(), title: title, isDone: false};
+         let newTasks = [task, ...tasks];
+         setTasks(newTasks);*/
     }
 
     function changeStatus(taskId: string, isDone: boolean) {
-       /* let task = tasks.find(t => t.id === taskId);
-        if (task) {
-            task.isDone = isDone;
-        }
+        /* let task = tasks.find(t => t.id === taskId);
+         if (task) {
+             task.isDone = isDone;
+         }
 
-        setTasks([...tasks]);*/
+         setTasks([...tasks]);*/
     }
 
 
-
-    function changeFilter(todolistId:string, value: FilterValuesType) {
-
-       /* setFilter(value);*/
+    function changeFilter(todolistId: string, value: FilterValuesType) {
+        const filteredTodolists = todolists.map(t => todolistId === t.id ? {...t, value} : t)
+        setTodolists(filteredTodolists)
+        /* setFilter(value);*/
     }
 
 
@@ -97,7 +98,7 @@ function App() {
 
                 return (
                     <Todolist
-                        todolists={todolists}
+                        todolistsId={t.id}
                         key={t.id}
                         title={t.title}
                         filter={t.filter}
